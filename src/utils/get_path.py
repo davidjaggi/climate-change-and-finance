@@ -19,7 +19,14 @@ def get_package_path():
     """
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+def get_results_path():
+    """
+    Returns the path to the results directory.
+    """
+    return os.path.join(get_root_path(), "results")
+
 if __name__ == '__main__':
     print(get_data_path())
     print(get_root_path())
     print(get_package_path())
+    print(get_results_path())
