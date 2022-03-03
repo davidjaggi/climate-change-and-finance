@@ -17,6 +17,4 @@ df["cum_returns"] = df["returns"].cumsum()
 plt.plot(df.index, df["cum_returns"])
 plt.title("Equally Weighted Portfolio")
 plt.xticks(rotation=45)
-plt.show()
-# %%
 plt.savefig(RESULTS_PATH + "/plots/equally_weighted_portfolio.png")

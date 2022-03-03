@@ -23,8 +23,17 @@ elec = elec[elec.columns[elec.min() > 1]]
 # %%
 # clalculate returns
 elec_returns = elec.apply(lambda x: x.pct_change(1))
-# %%
-elec_returns.cumsum().tail(1)
+
+tech_isin = tech["isin"].to_list()
+elec_isin = elec.columns.to_list()
+isin_overlap = [x for x in tech_isin if x in elec_isin]
+# filter for isin
+tech = tech[tech["isin"].isin(isin_overlap)]
+elec = elec.loc[:, isin_overlap]
+elec_returns = elec_returns.loc[:, isin_overlap]
+print(f"Elec returns shape: {elec_returns.shape}")
+print(f"Tech shape: {tech.shape}")
+
 # %%
 elec_returns.to_csv(DATA_PATH + "/clean/data_elec_returns_clean.csv")
 elec.to_csv(DATA_PATH + "/clean/data_elec_clean.csv")

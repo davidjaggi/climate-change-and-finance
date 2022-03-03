@@ -15,6 +15,7 @@ elec_isin = df_elec.columns.to_list()
 # %%
 isin_overlap = [x for x in tech_isin if x in elec_isin]
 
+
 # %%
 df_elec = df_elec.loc[:, isin_overlap + ["Date"]]
 df_tech = df_tech[df_tech["ISIN"].isin(isin_overlap)]
