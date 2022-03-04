@@ -16,7 +16,7 @@ def calc_stats(returns, filename=None):
     es = tail.mean()
     var = tail.iloc[0]
     if filename is not None:
-        file = open(RESULTS_PATH + "/text/"+ filename, 'w')
+        file = open(RESULTS_PATH + "/text/"+ filename + ".txt", 'w')
         print(f"Expected shortfall {es}", file=file)
         print(f"Value at Risk {var}", file=file)
         file.close()
