@@ -37,6 +37,10 @@ df_a2 = df.loc[:, isin_a2].sum(axis=1)
 df_a3 = df.loc[:, isin_a3].sum(axis=1)
 df_a4 = df.loc[:, isin_a4].sum(axis=1)
 # %%
+df_portfolio = pd.concat([df_a1, df_a2, df_a3, df_a4], axis=1)
+df_portfolio.columns = ["A1", "A2", "A3", "A4"]
+df_portfolio.to_csv(DATA_PATH + "/clean/exposure_rating_portfolio.csv")
+# %%
 plot_distribution(df_a1, title="A1 Returns", filename="a1_returns")
 plot_distribution(df_a2, title="A2 Returns", filename="a2_returns")
 plot_distribution(df_a3, title="A3 Returns", filename="a3_returns")
@@ -63,4 +67,3 @@ plt.legend()
 plt.xticks(rotation=45)
 plt.title("Cumulative returns of A1, A3 and A4 portfolios")
 plt.savefig(RESULTS_PATH + "/plots/exposure_rating_portfolio.png")
-
